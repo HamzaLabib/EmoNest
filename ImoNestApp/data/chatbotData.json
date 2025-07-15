@@ -1,0 +1,22 @@
+{
+  "happy": {
+    "prompt": "I'm feeling happy!",
+    "reply": "That's wonderful! What made you smile today?"
+  },
+  "sad": {
+    "prompt": "I'm feeling sad.",
+    "reply": "I'm here for you. Want to talk about what's making you feel this way?"
+  },
+  "angry": {
+    "prompt": "I'm feeling angry!",
+    "reply": "It's okay to feel angry. Let's take a deep breath together."
+  },
+  "scared": {
+    "prompt": "I'm feeling scared.",
+    "reply": "Would you like to listen to a calming story or do a breathing exercise?"
+  },
+  "bored": {
+    "prompt": "I'm feeling bored.",
+    "reply": "How about playing a mini-game or watching a fun video?"
+  }
+}

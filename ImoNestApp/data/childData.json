@@ -1,0 +1,8 @@
+{
+  "name": "Lily",
+  "age": 5,
+  "avatar": "../assets/avatar.png",
+  "favoriteColor": "Pink",
+  "calmingActivity": "Animated Stories",
+  "moodHistory": ["😊 Happy", "😟 Worried", "😌 Relaxed"]
+}

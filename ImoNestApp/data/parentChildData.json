@@ -1,0 +1,22 @@
+{
+  "parents": {
+    "parent123": {
+      "name": "John",
+      "email": "john@email.com",
+      "children": ["child001"]
+    }
+  },
+  "children": {
+    "child001": {
+      "name": "Lily",
+      "age": 5,
+      "moodHistory": [
+        { "date": "2025-07-10", "mood": "happy", "time": "09:00" },
+        { "date": "2025-07-10", "mood": "sad", "time": "15:00" }
+      ],
+      "audioLogs": [
+        { "uri": "path/to/audio1.m4a", "timestamp": "2025-07-09T14:00" }
+      ]
+    }
+  }
+}

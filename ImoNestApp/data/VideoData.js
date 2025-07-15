@@ -1,0 +1,17 @@
+export const videoSourceMap = {
+  happy: require('../assets/videos/happy.mp4'),
+  sad: require('../assets/videos/sad.mp4'),
+//   angry: require('../assets/videos/angry.mp4'),
+//   excited: require('../assets/videos/excited.mp4'),
+//   confused: require('../assets/videos/confused.mp4'),
+//   lonely: require('../assets/videos/lonely.mp4'),
+//   jealous: require('../assets/videos/jealous.mp4'),
+//   embarrassed: require('../assets/videos/embarrassed.mp4'),
+//   energetic: require('../assets/videos/energetic.mp4'),
+//   loved: require('../assets/videos/loved.mp4'),
+//   safe: require('../assets/videos/safe.mp4'),
+//   warm: require('../assets/videos/warm.mp4'),
+//   guilty: require('../assets/videos/guilty.mp4'),
+//   funny: require('../assets/videos/funny.mp4'),
+//   talkative: require('../assets/videos/talkative.mp4'),
+};

@@ -1,0 +1,10 @@
+# Node
+node_modules/
+.env
+
+# Expo/React Native
+.expo/
+.expo-shared/
+
+# Logs
+*.log
