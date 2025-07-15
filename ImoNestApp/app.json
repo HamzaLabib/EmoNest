@@ -5,11 +5,11 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "imonest",
-    "icon": "./assets/photos/logos/logo.png",
+    "icon": "./assets/photos/logos/logo4.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/photos/logos/logo.png",
+      "image": "./assets/photos/logos/logo4.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff",
       "plugins": [
@@ -31,7 +31,7 @@
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/photos/logos/logo.png"
+      "favicon": "./assets/photos/logos/logo7.png"
     },
     "extra": {
       "eas": {
