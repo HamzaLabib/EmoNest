@@ -43,7 +43,7 @@ export default StoryScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF7EC',
+    backgroundColor: '#fff3e9',
     padding: 20,
   },
   content: {

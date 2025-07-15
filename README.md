@@ -53,9 +53,9 @@ Authenticates user
 - Tools: GitHub, VS Code, Postman, Expo Dev Tools
 
 ### Live App
-- https://expo.dev/accounts/hamzalabib/projects/ImoNestApp/updates/3429e2ae-4a26-40cb-af26-901d2b7dd1c8
-- https://expo.dev/accounts/hamzalabib/projects/ImoNestApp/updates/32027df1-03f6-4d67-834c-31334a0040c7
+- https://famous-seahorse-b2b094.netlify.app/auth/login
 
+### Deployed Backend
 - https://imonest.onrender.com/api/auth/welcome
 
 ### Future Improvements

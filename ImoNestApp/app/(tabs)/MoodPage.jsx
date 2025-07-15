@@ -71,7 +71,7 @@ export default MoodPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF8F2',
+    backgroundColor: '#fff3e9',
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 20,

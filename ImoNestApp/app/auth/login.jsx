@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from '../../scripts/authUtils/authContext';
@@ -26,7 +26,12 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to ImoNest</Text>
+      <Image
+        source={require('../../assets/photos/logos/logo6.png')} // Replace with your logo path
+        style={styles.logo}
+        resizeMode="contain"
+      />
+      <Text style={styles.title}>ImoNest</Text>
       <CustomInput value={email} onChangeText={setEmail} placeholder="Email" />
       <CustomInput
         value={password}
@@ -34,16 +39,59 @@ export default function LoginScreen() {
         placeholder="Password"
         secureTextEntry
       />
-      <Button title="Login" onPress={handleLogin} />
-      <Text style={styles.link} onPress={() => router.push('/auth/signup')}>
-        No account? Sign up
+      <Pressable style={styles.button} onPress={handleLogin}>
+        <Text style={styles.buttonText}>Login</Text>
+      </Pressable>
+      <Text style={styles.link}>
+        No account?{' '}
+        <Text style={styles.linkBold} onPress={() => router.push('/auth/signup')}>
+          Sign up
+        </Text>
       </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', padding: 20 },
-  title: { fontSize: 24, marginBottom: 20, fontWeight: '600', textAlign: 'center' },
-  link: { color: 'blue', marginTop: 12, textAlign: 'center' },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff3e9',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+  },
+  logo: {
+    width: 222,
+    height: 222,
+    marginBottom: 8,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: '700',
+    color: '#4b2e2e',
+    marginBottom: 32,
+  },
+  button: {
+    backgroundColor: '#f9946b',
+    paddingVertical: 14,
+    paddingHorizontal: 32,
+    borderRadius: 16,
+    marginTop: 12,
+    width: '100%',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 16,
+  },
+  link: {
+    marginTop: 20,
+    fontSize: 14,
+    color: '#5a3d3d',
+  },
+  linkBold: {
+    fontWeight: '600',
+    color: '#a3543d',
+  },
 });

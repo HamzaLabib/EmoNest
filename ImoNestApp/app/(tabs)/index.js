@@ -106,7 +106,7 @@ export default ChatbotScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F9FF',
+    backgroundColor: '#fff3e9',
     paddingTop: 60,
     paddingVertical: 20,
   },

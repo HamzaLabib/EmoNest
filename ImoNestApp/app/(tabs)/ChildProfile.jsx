@@ -65,8 +65,8 @@ const ChildProfile = () => {
         ))
       )}
 
-      <Button title="Show Modal" onPress={() => setModalVisible(true)} />
-      <ModalExample visible={modalVisible} onClose={() => setModalVisible(false)} />
+      {/* <Button title="Show Modal" onPress={() => setModalVisible(true)} />
+      <ModalExample visible={modalVisible} onClose={() => setModalVisible(false)} /> */}
 
       {Platform.OS === 'android' && (
         <Button title="Show Toast" onPress={() => ToastAndroid.show('Hello from Android', ToastAndroid.SHORT)} />
@@ -80,7 +80,7 @@ export default ChildProfile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF8F2',
+    backgroundColor: '#fff3e9',
     alignItems: 'center',
     paddingTop: 40,
   },

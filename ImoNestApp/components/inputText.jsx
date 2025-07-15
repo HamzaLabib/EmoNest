@@ -16,16 +16,20 @@ export default function CustomInput({
       placeholder={placeholder}
       secureTextEntry={secureTextEntry}
       autoCapitalize={autoCapitalize}
+      placeholderTextColor="#bbaaaa"
     />
   );
 }
 
 const styles = StyleSheet.create({
   input: {
+    width: '100%',
+    backgroundColor: '#fff',
+    padding: 14,
+    borderRadius: 14,
     borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 12,
+    borderColor: '#e0cfc0',
     marginBottom: 16,
-    borderRadius: 8,
+    fontSize: 16,
   },
 });
