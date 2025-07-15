@@ -31,8 +31,7 @@
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/favicon.png",
-      "webpackConfig": "./webpack.config.js"
+      "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
