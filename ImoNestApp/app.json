@@ -43,6 +43,10 @@
     },
     "updates": {
       "url": "https://u.expo.dev/123652d9-5fc7-44ee-9871-ecddbb9a2011"
-    }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ]
   }
 }
