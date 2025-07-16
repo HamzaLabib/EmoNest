@@ -52,8 +52,8 @@ Authenticates user
 - Backend: Node.js, Express, Axios, MongoDB
 - Tools: GitHub, VS Code, Postman, Expo Dev Tools
 
-### Live App
-- https://famous-seahorse-b2b094.netlify.app/auth/login
+### Live Web App
+- https://imonestapp.expo.app/auth/login
 
 ### Deployed Backend
 - https://imonest.onrender.com/api/auth/welcome

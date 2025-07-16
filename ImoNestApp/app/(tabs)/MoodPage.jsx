@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, FlatList, Alert } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, FlatList, Alert, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { saveMoodToFile } from '../../scripts/storageUtils';
@@ -27,21 +27,33 @@ const MoodPage = () => {
       console.error('Failed to save mood:', error);
     }
 
-    Alert.alert(
-      "Pick an activity",
-      `For feeling "${mood}"`,
-      [
-        {
-          text: "Watch Movie 📺",
-          onPress: () => navigation.navigate('VideoScreen', { mood: mood.toLowerCase() }),
-        },
-        {
-          text: "Read Story 📖",
-          onPress: () => navigation.navigate('StoryScreen', { mood: mood.toLowerCase() }),
-        },
-        { text: "Cancel", style: "cancel" },
-      ]
-    );
+    if (Platform.OS === 'web') {
+      const choice = window.prompt(
+        `For feeling "${mood}", type 'movie' or 'story'`
+      );
+
+      if (choice === 'movie') {
+        navigation.navigate('VideoScreen', { mood: mood.toLowerCase() });
+      } else if (choice === 'story') {
+        navigation.navigate('StoryScreen', { mood: mood.toLowerCase() });
+      }
+    } else {
+      Alert.alert(
+        'Pick an activity',
+        `For feeling "${mood}"`,
+        [
+          {
+            text: 'Watch Movie 📺',
+            onPress: () => navigation.navigate('VideoScreen', { mood: mood.toLowerCase() }),
+          },
+          {
+            text: 'Read Story 📖',
+            onPress: () => navigation.navigate('StoryScreen', { mood: mood.toLowerCase() }),
+          },
+          { text: 'Cancel', style: 'cancel' },
+        ]
+      );
+    }
   };
 
   return (

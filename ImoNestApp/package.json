@@ -6,10 +6,7 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
-    "export:web": "expo export --platform web",
-    "postexport:web": "copy _redirects dist\\_redirects",
-    "vercel-build": "npm run export:web"
+    "web": "expo start --web"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.2.0",

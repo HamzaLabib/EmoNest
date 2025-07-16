@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -15,12 +15,14 @@ import MoodButtons from '../../components/HomeScreen/MoodButtons';
 import replies from '../../data/chatbotData.json';
 import { startRecording, stopRecording } from '../../scripts/audioUtils';
 import { speak } from '../../scripts/speechUtils';
+import { useAuth } from '../../scripts/authUtils/authContext';
 
 const ChatbotScreen = () => {
   const [conversation, setConversation] = useState([]);
   const [userInput, setUserInput] = useState('');
   const [recording, setRecording] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
+  const { logout } = useAuth();
 
   const getReply = (emotion) => {
     const entry = replies[emotion];
@@ -79,21 +81,29 @@ const ChatbotScreen = () => {
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      >
-      <Text style={styles.header}>Emotions Nest</Text>
+    >
+      <View style={styles.headerContainer}>
+        <TouchableOpacity onPress={logout} style={styles.logoutButton}>
+          <Text style={styles.logoutText}>Logout</Text>
+        </TouchableOpacity>
+        <Text style={styles.header}>Emotions Nest</Text>
+      </View>
+
       <Image
         source={require('../../assets/photos/logos/logo5.png')}
         style={styles.logo}
         resizeMode="contain"
       />
-      
+
       <FlatList
         data={conversation}
         renderItem={({ item }) => <MessageBubble message={item} />}
         keyExtractor={(_, i) => i.toString()}
         contentContainerStyle={{ paddingBottom: 10 }}
       />
+
       <MoodButtons moods={replies} onSelect={handleMoodSelect} />
+
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -124,16 +134,32 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     paddingVertical: 20,
   },
-  logo: {
-    width: 100,
-    height: 100,
-    alignSelf: 'center',
+  headerContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 20,
+    marginBottom: 10,
   },
   header: {
     fontSize: 26,
     fontWeight: '700',
-    textAlign: 'center',
+    color: '#2C2C2C',
     marginTop: '20'
+  },
+  logoutButton: {
+    padding: 6,
+    backgroundColor: '#ffe0e0',
+    borderRadius: 8,
+  },
+  logoutText: {
+    color: '#d00',
+    fontWeight: 'bold',
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
   },
   inputContainer: {
     flexDirection: 'row',
@@ -152,10 +178,10 @@ const styles = StyleSheet.create({
     marginRight: 6,
   },
   sendLine: {
-    marginTop: 10, 
+    marginTop: 10,
     flexDirection: 'row',
     alignSelf: 'center',
-    marginBottom: 10 
+    marginBottom: 10,
   },
   sendButton: {
     backgroundColor: '#6C9EFF',

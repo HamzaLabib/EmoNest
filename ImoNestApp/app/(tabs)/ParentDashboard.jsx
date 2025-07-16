@@ -39,7 +39,7 @@ const ParentDashboard = () => {
 
       <Text style={styles.section}>Mood History</Text>
       <FlatList
-        data={[...moodHistory].reverse().slice(0, 28)}
+        data={[...moodHistory].slice(0, 28)}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => (
           <Text style={styles.item}>
