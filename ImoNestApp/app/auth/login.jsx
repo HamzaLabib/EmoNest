@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, Pressable, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Pressable,
+  Alert,
+  ActivityIndicator,
+  Modal,
+} from 'react-native';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from '../../scripts/authUtils/authContext';
@@ -52,6 +61,14 @@ export default function LoginScreen() {
           Sign up
         </Text>
       </Text>
+
+      {/* Loading spinner */}
+      <Modal transparent visible={loading} animationType="fade">
+        <View style={styles.loadingSpinner}>
+          <ActivityIndicator size="large" color="#f9946b" />
+          <Text style={styles.loadingText}>Logging in...</Text>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -97,5 +114,17 @@ const styles = StyleSheet.create({
   linkBold: {
     fontWeight: '600',
     color: '#a3543d',
+  },
+  loadingSpinner: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText: {
+    marginTop: 12,
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: 'Bold',
   },
 });
