@@ -8,6 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "export:web": "expo export --platform web",
+    "postexport:web": "copy _redirects dist\\_redirects",
     "vercel-build": "npm run export:web"
   },
   "dependencies": {
