@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
-import { SafeAreaView, Text, StyleSheet, FlatList } from 'react-native';
+import { SafeAreaView, Text, StyleSheet, FlatList, Image } from 'react-native';
 import { getMoodHistoryFromFile } from '../../scripts/storageUtils';
 import parentData from '../../data/parentChildData.json';
 
@@ -28,7 +28,13 @@ const ParentDashboard = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Welcome, Parent!</Text>
+      <Text style={styles.header}>Parent Dashboard</Text>
+      <Image
+        source={require('../../assets/photos/logos/logo4a.png')}
+        style={styles.logo}
+        resizeMode="contain"
+      />
+      <Text style={styles.title}>Welcome, {child.name} Parent!</Text>
       <Text style={styles.subtitle}>Child: {child.name}, Age: {child.age}</Text>
 
       <Text style={styles.section}>Mood History</Text>
@@ -50,9 +56,11 @@ const ParentDashboard = () => {
 export default ParentDashboard;
 
 const styles = StyleSheet.create({
-  container: { alignItems: 'center', padding: 20, backgroundColor: '#FFF', flex: 1 },
-  title: { fontSize: 24, fontWeight: 'bold', marginTop: 90, marginBottom: 10 },
+  container: { alignItems: 'center', padding: 20, backgroundColor: '#fff3e9', flex: 1 },
+  logo: { width: 120, height: 120, alignSelf: 'center', marginBottom: '80' },
+  header: { fontSize: 26, fontWeight: '700', color: '#2C2C2C', marginTop: '20' },
+  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 10 },
   subtitle: { fontSize: 18, marginBottom: 20 },
   section: { fontSize: 20, fontWeight: '600', marginTop: 20 },
-  item: { fontSize: 16, marginVertical: 6, alignSelf: 'center'}
+  item: { fontSize: 16, marginVertical: 6, alignSelf: 'center'},
 });

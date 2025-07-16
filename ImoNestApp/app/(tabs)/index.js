@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
+  Image
 } from 'react-native';
 import MessageBubble from '../../components/HomeScreen/MessageBubble';
 import MoodButtons from '../../components/HomeScreen/MoodButtons';
@@ -71,8 +72,14 @@ const ChatbotScreen = () => {
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-    >
+      >
       <Text style={styles.header}>Emotions Nest</Text>
+      <Image
+        source={require('../../assets/photos/logos/logo5.png')}
+        style={styles.logo}
+        resizeMode="contain"
+      />
+      
       <FlatList
         data={conversation}
         renderItem={({ item }) => <MessageBubble message={item} />}
@@ -110,11 +117,16 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     paddingVertical: 20,
   },
+  logo: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
+  },
   header: {
     fontSize: 26,
     fontWeight: '700',
-    marginBottom: 10,
     textAlign: 'center',
+    marginTop: '20'
   },
   inputContainer: {
     flexDirection: 'row',

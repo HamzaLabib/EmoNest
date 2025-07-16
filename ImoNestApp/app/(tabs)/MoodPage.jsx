@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: '#2C2C2C',
     textAlign: 'center',
+    marginTop: '20'
   },
   grid: {
     flexDirection: 'row',

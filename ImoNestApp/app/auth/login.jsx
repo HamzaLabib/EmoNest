@@ -9,10 +9,12 @@ import CustomInput from '../../components/inputText';
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { setAuthenticated } = useAuth();
 
   const handleLogin = async () => {
+    setLoading(true);
     try {
       const data = await loginUser(email, password);
       await AsyncStorage.setItem('userToken', data.token || 'dummyToken');
@@ -21,13 +23,15 @@ export default function LoginScreen() {
     } catch (err) {
       console.error(err);
       Alert.alert('Login Failed', err.response?.data?.message || 'Something went wrong');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/photos/logos/logo6.png')} // Replace with your logo path
+        source={require('../../assets/photos/logos/logo6.png')}
         style={styles.logo}
         resizeMode="contain"
       />

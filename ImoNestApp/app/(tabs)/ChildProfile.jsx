@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import { SafeAreaView, StyleSheet, Text, Platform, Alert, BackHandler, Button, ToastAndroid,} from 'react-native';
+import { SafeAreaView, StyleSheet, Text, Platform, Alert, BackHandler, Button, ToastAndroid, Image} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import child from '../../data/childData.json';
 import ModalExample from '../../components/ModalExample';
@@ -45,6 +45,11 @@ const ChildProfile = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.header}>Child Profile</Text>
+      <Image
+        source={require('../../assets/photos/logos/logo0.png')}
+        style={styles.logo}
+        resizeMode="contain"
+      />
 
       <ChildInfo
         avatar={avatarSource}
@@ -84,11 +89,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 40,
   },
+  logo: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
+    marginBottom: 90,
+  },
   header: {
     fontSize: 26,
     fontWeight: '700',
-    marginBottom: 20,
     color: '#2C2C2C',
+    marginTop: '20'
   },
   subHeader: {
     marginTop: 20,

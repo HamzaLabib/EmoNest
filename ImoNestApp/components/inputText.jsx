@@ -16,6 +16,8 @@ export default function CustomInput({
       placeholder={placeholder}
       secureTextEntry={secureTextEntry}
       autoCapitalize={autoCapitalize}
+      autoComplete="off"
+      autoCorrect={false}
       placeholderTextColor="#bbaaaa"
     />
   );
