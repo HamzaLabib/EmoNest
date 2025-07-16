@@ -1,22 +1,50 @@
 {
   "happy": {
     "prompt": "I'm feeling happy!",
-    "reply": "That's wonderful! What made you smile today?"
+    "replies": [
+      "That's wonderful! What made you smile today?",
+      "Yay! I'm so glad you're feeling happy!",
+      "Happiness is the best! Want to share why?"
+    ]
   },
   "sad": {
     "prompt": "I'm feeling sad.",
-    "reply": "I'm here for you. Want to talk about what's making you feel this way?"
+    "replies": [
+      "I'm here for you. Want to talk about what's making you feel this way?",
+      "It’s okay to feel sad. I’m listening if you want to share.",
+      "Big hugs. Let’s try to cheer you up a little!"
+    ]
   },
   "angry": {
     "prompt": "I'm feeling angry!",
-    "reply": "It's okay to feel angry. Let's take a deep breath together."
+    "replies": [
+      "It's okay to feel angry. Let's take a deep breath together.",
+      "Anger is a valid feeling. Want to do a calming activity?",
+      "Let’s take a moment to cool off. I’m here for you."
+    ]
   },
   "scared": {
     "prompt": "I'm feeling scared.",
-    "reply": "Would you like to listen to a calming story or do a breathing exercise?"
+    "replies": [
+      "Would you like to listen to a calming story or do a breathing exercise?",
+      "Let’s turn that fear into courage. I’m right here with you.",
+      "Scary feelings come and go. Want a comforting video?"
+    ]
   },
-  "bored": {
-    "prompt": "I'm feeling bored.",
-    "reply": "How about playing a mini-game or watching a fun video?"
+  "excited": {
+    "prompt": "I'm feeling excited!",
+    "replies": [
+      "Yay! That sounds amazing! What's getting you pumped up?",
+      "Excitement is contagious! Tell me more!",
+      "Woot woot! Want to celebrate together?"
+    ]
+  },
+  "proud": {
+    "prompt": "I'm feeling proud!",
+    "replies": [
+      "That’s awesome! I’d love to hear what you accomplished!",
+      "You should be proud! High five!",
+      "Tell me all about your amazing achievement!"
+    ]
   }
 }

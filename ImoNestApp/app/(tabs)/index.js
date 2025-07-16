@@ -22,27 +22,35 @@ const ChatbotScreen = () => {
   const [recording, setRecording] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
 
+  const getReply = (emotion) => {
+    const entry = replies[emotion];
+    if (!entry) return "Hmm, I’m not sure how to respond to that yet.";
+    const replyArray = entry.replies || [entry.reply];
+    const randomIndex = Math.floor(Math.random() * replyArray.length);
+    return replyArray[randomIndex];
+  };
+
   const handleMoodSelect = (moodKey) => {
     const mood = replies[moodKey];
     if (!mood) return;
+    const randomReply = getReply(moodKey);
+
     setConversation((prev) => [
       ...prev,
       { sender: 'child', text: mood.prompt },
-      { sender: 'bot', text: mood.reply },
+      { sender: 'bot', text: randomReply },
     ]);
-    speak(mood.reply);
+    speak(randomReply);
   };
 
   const handleSend = () => {
     if (!userInput.trim()) return;
-
     const input = userInput.trim().toLowerCase();
     const matchedKey = Object.keys(replies).find((key) =>
       input.includes(key)
     );
-
     const botReply = matchedKey
-      ? replies[matchedKey].reply
+      ? getReply(matchedKey)
       : "I'm not sure how to respond to that, but I'm here to listen!";
 
     setConversation((prev) => [
@@ -50,7 +58,6 @@ const ChatbotScreen = () => {
       { sender: 'child', text: userInput },
       { sender: 'bot', text: botReply },
     ]);
-
     speak(botReply);
     setUserInput('');
   };

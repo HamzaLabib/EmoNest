@@ -11,7 +11,7 @@ const StoryScreen = () => {
   const { mood } = route.params;
   const [page, setPage] = useState(0);
 
-  const story = stories[mood] || ['No story available for this feeling.'];
+  const story = stories[mood] || ['Story Feature will come soon!'];
 
   const handleNext = () => {
     if (page < story.length - 1) setPage(page + 1);

@@ -26,7 +26,7 @@ const VideoScreen = () => {
           style={styles.video}
         />
       ) : (
-        <Text style={styles.error}>Video not found for this mood.</Text>
+        <Text style={styles.error}>Video Feature will approach soon!</Text>
       )}
     </SafeAreaView>
   );
@@ -47,13 +47,14 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height * 0.5,
   },
   title: {
-    color: '#fff',
+    color: 'green',
     fontSize: 22,
     marginBottom: 10,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
   error: {
     color: 'red',
+    fontWeight: 'bold',
     fontSize: 18,
     marginTop: 20,
   },
