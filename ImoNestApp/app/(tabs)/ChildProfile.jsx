@@ -1,8 +1,17 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import { SafeAreaView, StyleSheet, Text, Platform, Alert, BackHandler, Button, ToastAndroid, Image} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  Platform,
+  Alert,
+  BackHandler,
+  Button,
+  ToastAndroid,
+  Image,
+} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import child from '../../data/childData.json';
 import ModalExample from '../../components/ModalExample';
 import ChildInfo from '../../components/ProfileScreen/ChildInfo';
 
@@ -10,10 +19,23 @@ const ChildProfile = () => {
   const avatarSource = require('../../assets/photos/avatars/lily.png');
   const [modalVisible, setModalVisible] = useState(false);
   const [moodHistory, setMoodHistory] = useState([]);
+  const [childInfo, setChildInfo] = useState({ childName: '', age: '' });
   const navigation = useNavigation();
 
   useFocusEffect(
     useCallback(() => {
+      const fetchUserInfo = async () => {
+        try {
+          const storedUser = await AsyncStorage.getItem('userInfo');
+          if (storedUser) {
+            const parsed = JSON.parse(storedUser);
+            setChildInfo(parsed);
+          }
+        } catch (error) {
+          console.error('Failed to load user info:', error);
+        }
+      };
+
       const fetchMoodHistory = async () => {
         try {
           const storedHistory = await AsyncStorage.getItem('moodHistory');
@@ -26,6 +48,7 @@ const ChildProfile = () => {
         }
       };
 
+      fetchUserInfo();
       fetchMoodHistory();
 
       if (Platform.OS === 'android') {
@@ -53,10 +76,8 @@ const ChildProfile = () => {
 
       <ChildInfo
         avatar={avatarSource}
-        name={child.name}
-        age={child.age}
-        favoriteColor={child.favoriteColor}
-        calmingActivity={child.calmingActivity}
+        name={childInfo.childName || 'Child'}
+        age={childInfo.age || 'Age'}
       />
 
       <Text style={styles.subHeader}>Recent Moods</Text>
@@ -69,9 +90,6 @@ const ChildProfile = () => {
           </Text>
         ))
       )}
-
-      {/* <Button title="Show Modal" onPress={() => setModalVisible(true)} />
-      <ModalExample visible={modalVisible} onClose={() => setModalVisible(false)} /> */}
 
       {Platform.OS === 'android' && (
         <Button title="Show Toast" onPress={() => ToastAndroid.show('Hello from Android', ToastAndroid.SHORT)} />
@@ -99,7 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '700',
     color: '#2C2C2C',
-    marginTop: '20'
+    marginTop: 20,
   },
   subHeader: {
     marginTop: 20,

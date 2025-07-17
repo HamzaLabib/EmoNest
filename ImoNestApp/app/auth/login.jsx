@@ -27,6 +27,16 @@ export default function LoginScreen() {
     try {
       const data = await loginUser(email, password);
       await AsyncStorage.setItem('userToken', data.token || 'dummyToken');
+      await AsyncStorage.setItem(
+        'userInfo',
+        JSON.stringify({
+          email,
+          parentName: data.pName,
+          childName: data.cName,
+          age: data.age,
+        })
+      );
+      
       setAuthenticated(true);
       router.replace('/');
     } catch (err) {

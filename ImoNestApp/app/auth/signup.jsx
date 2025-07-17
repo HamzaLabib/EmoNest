@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Pressable, Alert, Image } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Alert, Image, Modal, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { registerUser } from '../../scripts/authUtils/authAPI';
 import CustomInput from '../../components/inputText';
 
 export default function SignupScreen() {
+  const [parentName, setPName] = useState('');
+  const [childName, setCName] = useState('');
+  const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSignup = async () => {
+    setLoading(true);
     try {
-      const data = await registerUser(email, password);
+      const data = await registerUser(parentName, childName, age, email, password);
       Alert.alert('Success', data.message || 'Account created!');
       router.replace('/auth/login');
     } catch (err) {
       console.error(err);
       Alert.alert('Signup Failed', err.response?.data?.message || 'Something went wrong');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -29,6 +36,9 @@ export default function SignupScreen() {
       />
       <Text style={styles.title}>ImoNest</Text>
       <Text style={styles.title}>Create an Account</Text>
+      <CustomInput value={parentName} onChangeText={setPName} placeholder="Parent Name" />
+      <CustomInput value={childName} onChangeText={setCName} placeholder="Child Name" />
+      <CustomInput value={age} onChangeText={setAge} placeholder="Child Age" />
       <CustomInput value={email} onChangeText={setEmail} placeholder="Email" />
       <CustomInput
         value={password}
@@ -45,6 +55,13 @@ export default function SignupScreen() {
           Login
         </Text>
       </Text>
+      {/* Loading spinner */}
+            <Modal transparent visible={loading} animationType="fade">
+              <View style={styles.loadingSpinner}>
+                <ActivityIndicator size="large" color="#f9946b" />
+                <Text style={styles.loadingText}>Account Creating...</Text>
+              </View>
+            </Modal>
     </View>
   );
 }
@@ -90,5 +107,17 @@ const styles = StyleSheet.create({
   linkBold: {
     fontWeight: '600',
     color: '#a3543d',
+  },
+    loadingSpinner: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText: {
+    marginTop: 12,
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: 'Bold',
   },
 });

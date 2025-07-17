@@ -3,7 +3,7 @@ import { View, Image, Text, StyleSheet } from 'react-native';
 
 const ChildInfo = ({ avatar, name, age, favoriteColor, calmingActivity }) => (
   <View style={styles.container}>
-    <Text style={styles.name}>{name}, Age {age}</Text>
+    <Text style={styles.name}>{name}, {age} years old</Text>
     <Image source={avatar} style={styles.avatar} />
     <Text style={styles.info}>Favorite Color: {favoriteColor}</Text>
     <Text style={styles.info}>Preferred Calming Activity: {calmingActivity}</Text>
