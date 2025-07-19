@@ -34,7 +34,7 @@ export default function SignupScreen() {
         style={styles.logo}
         resizeMode="contain"
       />
-      <Text style={styles.title}>ImoNest</Text>
+      <Text style={styles.title}>EmoNest</Text>
       <Text style={styles.title}>Create an Account</Text>
       <CustomInput value={parentName} onChangeText={setPName} placeholder="Parent Name" />
       <CustomInput value={childName} onChangeText={setCName} placeholder="Child Name" />

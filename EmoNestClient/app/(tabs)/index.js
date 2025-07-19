@@ -1,20 +1,7 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  FlatList,
-  KeyboardAvoidingView,
-  Platform,
-  StyleSheet,
-  Image
-} from 'react-native';
+import React, { useState, useEffect, useCallback } from 'react';
+import { View, Text, TextInput, TouchableOpacity, FlatList, KeyboardAvoidingView, Platform, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import MessageBubble from '../../components/HomeScreen/MessageBubble';
 import MoodButtons from '../../components/HomeScreen/MoodButtons';
-import replies from '../../data/chatbotData.json';
-import { startRecording, stopRecording } from '../../scripts/audioUtils';
-import { speak } from '../../scripts/speechUtils';
 import { useAuth } from '../../scripts/authUtils/authContext';
 
 const ChatbotScreen = () => {
@@ -22,19 +9,44 @@ const ChatbotScreen = () => {
   const [userInput, setUserInput] = useState('');
   const [recording, setRecording] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
+  const [replies, setReplies] = useState(null);
+  const [utils, setUtils] = useState(null);
   const { logout } = useAuth();
 
-  const getReply = (emotion) => {
-    const entry = replies[emotion];
+  // Lazy load chatbot data and audio/speech utils
+  useEffect(() => {
+    const loadData = async () => {
+      const [dataModule, speechModule, audioModule] = await Promise.all([
+        import('../../data/chatbotData.json'),
+        import('../../scripts/speechUtils'),
+        import('../../scripts/audioUtils'),
+      ]);
+      setReplies(dataModule.default);
+      setUtils({
+        speak: speechModule.speak,
+        startRecording: audioModule.startRecording,
+        stopRecording: audioModule.stopRecording,
+      });
+
+      // Prefetch logo image (optional for performance)
+      Image.prefetch('../../assets/photos/logos/logo5.png');
+    };
+
+    loadData();
+  }, []);
+
+  const getReply = useCallback((emotion) => {
+    const entry = replies?.[emotion];
     if (!entry) return "Hmm, I’m not sure how to respond to that yet.";
     const replyArray = entry.replies || [entry.reply];
     const randomIndex = Math.floor(Math.random() * replyArray.length);
     return replyArray[randomIndex];
-  };
+  }, [replies]);
 
-  const handleMoodSelect = (moodKey) => {
-    const mood = replies[moodKey];
+  const handleMoodSelect = async (moodKey) => {
+    const mood = replies?.[moodKey];
     if (!mood) return;
+
     const randomReply = getReply(moodKey);
 
     setConversation((prev) => [
@@ -42,7 +54,7 @@ const ChatbotScreen = () => {
       { sender: 'child', text: mood.prompt },
       { sender: 'bot', text: randomReply },
     ]);
-    speak(randomReply);
+    utils?.speak?.(randomReply);
   };
 
   const handleSend = () => {
@@ -60,22 +72,31 @@ const ChatbotScreen = () => {
       { sender: 'child', text: userInput },
       { sender: 'bot', text: botReply },
     ]);
-    speak(botReply);
+    utils?.speak?.(botReply);
     setUserInput('');
   };
 
   const toggleRecording = async () => {
     if (isRecording) {
-      await stopRecording(recording, setConversation);
+      await utils?.stopRecording?.(recording, setConversation);
       setIsRecording(false);
       setRecording(null);
     } else {
-      await startRecording((rec) => {
+      await utils?.startRecording?.((rec) => {
         setRecording(rec);
         setIsRecording(true);
       });
     }
   };
+
+  if (!replies || !utils) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#f9946b" />
+        <Text style={styles.loadingText}>Getting your nest ready...</Text>
+      </View>
+    );
+  }
 
   return (
     <KeyboardAvoidingView
@@ -89,11 +110,7 @@ const ChatbotScreen = () => {
         <Text style={styles.header}>Emotions Nest</Text>
       </View>
 
-      <Image
-        source={require('../../assets/photos/logos/logo5.png')}
-        style={styles.logo}
-        resizeMode="contain"
-      />
+      <Image source={require('../../assets/photos/logos/logo5.png')} style={styles.logo} resizeMode="contain"/>
 
       <FlatList
         data={conversation}
@@ -105,12 +122,7 @@ const ChatbotScreen = () => {
       <MoodButtons moods={replies} onSelect={handleMoodSelect} />
 
       <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          value={userInput}
-          onChangeText={setUserInput}
-          placeholder="Every feeling is okay, what are they telling you today?"
-        />
+        <TextInput style={styles.input} value={userInput} onChangeText={setUserInput} placeholder="Every feeling is okay, what are they telling you today?"/>
       </View>
 
       <View style={styles.sendLine}>
@@ -134,6 +146,18 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     paddingVertical: 20,
   },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff3e9',
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#555',
+  },
   headerContainer: {
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -145,7 +169,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '700',
     color: '#2C2C2C',
-    marginTop: '20'
+    marginTop: '20',
   },
   logoutButton: {
     padding: 6,

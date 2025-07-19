@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, FlatList, Alert, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -6,9 +6,12 @@ import { saveMoodToFile } from '../../scripts/storageUtils';
 import moment from 'moment';
 import moodData from '../../data/MoodData';
 import MoodItem from '../../components/MoodScreen/MoodItem';
+import ActivityChoiceModal from '../../components/MoodScreen/ActivityChoiceModal';
 
 const MoodPage = () => {
   const navigation = useNavigation();
+  const [selectedMood, setSelectedMood] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleMoodSelect = async (mood) => {
     try {
@@ -28,15 +31,8 @@ const MoodPage = () => {
     }
 
     if (Platform.OS === 'web') {
-      const choice = window.prompt(
-        `For feeling "${mood}", type 'movie' or 'story'`
-      );
-
-      if (choice === 'movie') {
-        navigation.navigate('VideoScreen', { mood: mood.toLowerCase() });
-      } else if (choice === 'story') {
-        navigation.navigate('StoryScreen', { mood: mood.toLowerCase() });
-      }
+      setSelectedMood(mood);
+      setModalVisible(true);
     } else {
       Alert.alert(
         'Pick an activity',
@@ -73,6 +69,22 @@ const MoodPage = () => {
             onPress={() => handleMoodSelect(item.label)}
           />
         )}
+      />
+
+      {/* Web Modal for activity choice */}
+      <ActivityChoiceModal
+        visible={modalVisible}
+        mood={selectedMood}
+        onClose={() => setModalVisible(false)}
+        onChoice={(choice) => {
+          const mood = selectedMood.toLowerCase();
+          if (choice === 'movie') {
+            navigation.navigate('VideoScreen', { mood });
+          } else if (choice === 'story') {
+            navigation.navigate('StoryScreen', { mood });
+          }
+          setModalVisible(false);
+        }}
       />
     </SafeAreaView>
   );

@@ -54,7 +54,7 @@ export default function LoginScreen() {
         style={styles.logo}
         resizeMode="contain"
       />
-      <Text style={styles.title}>ImoNest</Text>
+      <Text style={styles.title}>EmoNest</Text>
       <CustomInput value={email} onChangeText={setEmail} placeholder="Email" />
       <CustomInput
         value={password}
