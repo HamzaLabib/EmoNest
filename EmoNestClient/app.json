@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "ImoNestApp",
-    "slug": "ImoNestApp",
+    "name": "EmoNestApp",
+    "slug": "EmoNestApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "scheme": "imonest",
+    "scheme": "Emonest",
     "icon": "./assets/photos/logos/logo4.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
@@ -18,7 +18,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.hamzalabib.ImoNestApp",
+      "bundleIdentifier": "com.hamzalabib.EmoNestApp",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -35,8 +35,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "123652d9-5fc7-44ee-9871-ecddbb9a2011"
-      }
+        "projectId": "dc2bc852-55bd-4ade-821c-41011a8ce7f7"
+      },
+      "router": {}
     },
     "runtimeVersion": {
       "policy": "appVersion"

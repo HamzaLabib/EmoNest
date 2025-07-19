@@ -1,4 +1,4 @@
-# ImoNest App Devlog
+# EmoNest App Devlog
 
 ## Week 1
 **Update:**  

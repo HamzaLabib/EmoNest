@@ -1,7 +1,7 @@
-# ImoNest
+# EmoNest
 
 ## 📘 Project Overview
-ImoNest is a child-friendly emotional expression mobile application developed using React Native and Node.js. It allows children to interact with a chatbot, select moods, and record emotional logs in a safe and empathetic environment. The app includes both child and parent interfaces, and a backend API for user authentication and data management.
+EmoNest is a child-friendly emotional expression mobile application developed using React Native and Node.js. It allows children to interact with a chatbot, select moods, and record emotional logs in a safe and empathetic environment. The app includes both child and parent interfaces, and a backend API for user authentication and data management.
 
 ## Features
 - User authentication (login/signup)
@@ -14,16 +14,16 @@ ImoNest is a child-friendly emotional expression mobile application developed us
 
 ## Installation Instructions
 
-### Backend (ImoNestServer)
+### Backend (EmoNestServer)
 ```bash
-cd ImoNestServer
+cd EmoNestServer
 npm install
 npm start
 ```
 
-### Frontend (ImoNestApp)
+### Frontend (EmoNestClient)
 ```bash
-cd ImoNestApp
+cd EmoNestClient
 npm install
 npm start
 ```
@@ -53,7 +53,7 @@ Authenticates user
 - Tools: GitHub, VS Code, Postman, Expo Dev Tools
 
 ### Live Web App
-- https://imonestapp.expo.app/auth/login
+- https://emonestapp.expo.app/auth/login
 
 ### Deployed Backend
 - https://imonest.onrender.com/api/auth/welcome
