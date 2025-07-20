@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Pressable, Alert, Image, Modal, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Alert, Image, Modal, ActivityIndicator, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useRouter } from 'expo-router';
 import { registerUser } from '../../scripts/authUtils/authAPI';
-import CustomInput from '../../components/inputText';
+import CustomInput from '../../components/CustomInput';
 
 export default function SignupScreen() {
   const [parentName, setPName] = useState('');
@@ -27,42 +27,72 @@ export default function SignupScreen() {
     }
   };
 
+  const emailValidator = (val) => {
+    if (!val) return 'Email is required';
+    const re = /^[^\s@]+@[^\s@]+\.com$/;
+    if (!re.test(val)) return 'Not a valid email!';
+    return null;
+  };
+
+  const ageValidator = (val) => {
+    if (!val) return 'Age is required';
+    const num = parseInt(val, 10);
+    if (isNaN(num)) return 'Must be a number';
+    if (num < 3 || num > 30) return 'Enter a realistic age';
+    return null;
+  };
+
+  const passValidator = (val) => {
+    if (!val) return 'Password is required';
+    if (val.length < 8) return 'Password must be at least 8 characters';
+    return null;
+  };
+
+  const Wrapper = Platform.OS === 'web'
+  ? React.Fragment
+  : TouchableWithoutFeedback;
+
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../../assets/photos/logos/logo6.png')}
-        style={styles.logo}
-        resizeMode="contain"
-      />
-      <Text style={styles.title}>EmoNest</Text>
-      <Text style={styles.title}>Create an Account</Text>
-      <CustomInput value={parentName} onChangeText={setPName} placeholder="Parent Name" />
-      <CustomInput value={childName} onChangeText={setCName} placeholder="Child Name" />
-      <CustomInput value={age} onChangeText={setAge} placeholder="Child Age" />
-      <CustomInput value={email} onChangeText={setEmail} placeholder="Email" />
-      <CustomInput
-        value={password}
-        onChangeText={setPassword}
-        placeholder="Password"
-        secureTextEntry
-      />
-      <Pressable style={styles.button} onPress={handleSignup}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </Pressable>
-      <Text style={styles.link}>
-        Already have an account?{' '}
-        <Text style={styles.linkBold} onPress={() => router.push('/auth/login')}>
-          Login
+    <Wrapper onPress={Keyboard.dismiss} accessible={false}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <Image
+          source={require('../../assets/photos/logos/logo6.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
+        <Text style={styles.title}>EmoNest</Text>
+        <Text style={styles.title}>Create an Account</Text>
+        <CustomInput value={parentName} onChangeText={setPName} placeholder="Parent Name" />
+        <CustomInput value={childName} onChangeText={setCName} placeholder="Child Name" />
+        <CustomInput value={age} onChangeText={setAge} placeholder="Child Age" keyboardType="numeric" validate={ageValidator} />
+        <CustomInput value={email} onChangeText={setEmail} placeholder="Email" keyboardType="email-address" validate={emailValidator} />
+        <CustomInput
+          value={password}
+          onChangeText={setPassword}
+          placeholder="Password"
+          secureTextEntry
+        />
+        <Pressable style={styles.button} onPress={handleSignup}>
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </Pressable>
+        <Text style={styles.link}>
+          Already have an account?{' '}
+          <Text style={styles.linkBold} onPress={() => router.push('/auth/login')}>
+            Login
+          </Text>
         </Text>
-      </Text>
-      {/* Loading spinner */}
-            <Modal transparent visible={loading} animationType="fade">
-              <View style={styles.loadingSpinner}>
-                <ActivityIndicator size="large" color="#f9946b" />
-                <Text style={styles.loadingText}>Account Creating...</Text>
-              </View>
-            </Modal>
-    </View>
+        {/* Loading spinner */}
+        <Modal transparent visible={loading} animationType="fade">
+          <View style={styles.loadingSpinner}>
+            <ActivityIndicator size="large" color="#f9946b" />
+            <Text style={styles.loadingText}>Account Creating...</Text>
+          </View>
+        </Modal>
+      </KeyboardAvoidingView>
+    </Wrapper>
   );
 }
 

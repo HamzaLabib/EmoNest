@@ -8,12 +8,16 @@ import {
   Alert,
   ActivityIndicator,
   Modal,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from '../../scripts/authUtils/authContext';
 import { loginUser } from '../../scripts/authUtils/authAPI';
-import CustomInput from '../../components/inputText';
+import CustomInput from '../../components/CustomInput';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -47,39 +51,48 @@ export default function LoginScreen() {
     }
   };
 
-  return (
-    <View style={styles.container}>
-      <Image
-        source={require('../../assets/photos/logos/logo6.png')}
-        style={styles.logo}
-        resizeMode="contain"
-      />
-      <Text style={styles.title}>EmoNest</Text>
-      <CustomInput value={email} onChangeText={setEmail} placeholder="Email" />
-      <CustomInput
-        value={password}
-        onChangeText={setPassword}
-        placeholder="Password"
-        secureTextEntry
-      />
-      <Pressable style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
-      </Pressable>
-      <Text style={styles.link}>
-        No account?{' '}
-        <Text style={styles.linkBold} onPress={() => router.push('/auth/signup')}>
-          Sign up
-        </Text>
-      </Text>
+  const Wrapper = Platform.OS === 'web'
+  ? React.Fragment
+  : TouchableWithoutFeedback;
 
-      {/* Loading spinner */}
-      <Modal transparent visible={loading} animationType="fade">
-        <View style={styles.loadingSpinner}>
-          <ActivityIndicator size="large" color="#f9946b" />
-          <Text style={styles.loadingText}>Logging in...</Text>
-        </View>
-      </Modal>
-    </View>
+  return (
+    <Wrapper onPress={Keyboard.dismiss} accessible={false}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <Image
+          source={require('../../assets/photos/logos/logo6.png')}
+          style={styles.logo}
+          resizeMode="contain"
+          />
+        <Text style={styles.title}>EmoNest</Text>
+        <CustomInput value={email} onChangeText={setEmail} placeholder="Email" keyboardType="email-address"/>
+        <CustomInput
+          value={password}
+          onChangeText={setPassword}
+          placeholder="Password"
+          secureTextEntry
+          />
+        <Pressable style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
+        </Pressable>
+        <Text style={styles.link}>
+          No account?{' '}
+          <Text style={styles.linkBold} onPress={() => router.push('/auth/signup')}>
+            Sign up
+          </Text>
+        </Text>
+
+        {/* Loading spinner */}
+        <Modal transparent visible={loading} animationType="fade">
+          <View style={styles.loadingSpinner}>
+            <ActivityIndicator size="large" color="#f9946b" />
+            <Text style={styles.loadingText}>Logging in...</Text>
+          </View>
+        </Modal>
+      </KeyboardAvoidingView>
+    </Wrapper>
   );
 }
 
