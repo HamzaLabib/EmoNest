@@ -26,10 +26,22 @@ export default function LoginScreen() {
   const router = useRouter();
   const { setAuthenticated } = useAuth();
 
+  // helper to show an alert both on native and web
+  const showAlert = (title, message) => {
+    if (Platform.OS === 'web') {
+      // on web, use the browser alert
+      window.alert(`${title}\n\n${message}`);
+    } else {
+      // on iOS/Android, use RN’s Alert
+      Alert.alert(title, message);
+    }
+  };
+
   const handleLogin = async () => {
     setLoading(true);
     try {
       const data = await loginUser(email, password);
+
       await AsyncStorage.setItem('userToken', data.token || 'dummyToken');
       await AsyncStorage.setItem(
         'userInfo',
@@ -40,12 +52,15 @@ export default function LoginScreen() {
           age: data.age,
         })
       );
-      
+
       setAuthenticated(true);
+
+      showAlert('Success', data.message || 'Logged in successfully');
       router.replace('/');
     } catch (err) {
       console.error(err);
-      Alert.alert('Login Failed', err.response?.data?.message || 'Something went wrong');
+      const msg = err.response?.data?.message || 'Something went wrong';
+      showAlert('Login Failed', msg);
     } finally {
       setLoading(false);
     }

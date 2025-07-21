@@ -13,6 +13,16 @@ export default function SignupScreen() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  const showAlert = (title, message) => {
+    if (Platform.OS === 'web') {
+      // on web, use the browser alert
+      window.alert(`${title}\n\n${message}`);
+    } else {
+      // on iOS/Android, use RN’s Alert
+      Alert.alert(title, message);
+    }
+  };
+
   const handleSignup = async () => {
     setLoading(true);
     try {
@@ -20,8 +30,8 @@ export default function SignupScreen() {
       Alert.alert('Success', data.message || 'Account created!');
       router.replace('/auth/login');
     } catch (err) {
-      console.error(err);
-      Alert.alert('Signup Failed', err.response?.data?.message || 'Something went wrong');
+      const msg = err.response?.data?.message || 'Something went wrong';
+      showAlert('Signup Failed', msg);
     } finally {
       setLoading(false);
     }
