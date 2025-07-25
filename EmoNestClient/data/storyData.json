@@ -1,107 +1,254 @@
 {
-"happy": [
-  "In a bright meadow, a bird twirled under the sun with giggles in the wind.",
-  "Its wings sparkled as it played hide-and-seek with the daisies.",
-  "The whole forest smiled, for happiness shone from that little heart."
-],
-
-"relaxed": [
-  "A cozy bird rocked gently in a tree swing, listening to soft leaves rustle.",
-  "With each sway, the sky whispered calm lullabies.",
-  "It closed its eyes, knowing everything was just right in that moment."
-],
-
-"safe": [
-  "Tucked beneath its mama's wing, the little bird heard the beat of love.",
-  "Even when the wind howled, that soft warmth never faded.",
-  "It knew no storm could reach it while that wing was there."
-],
-
-"energetic": [
-  "The bird zipped through the sky like a rainbow lightning bolt!",
-  "It chirped with excitement, daring clouds to race it.",
-  "Every flap of its wings shouted, 'I'm ready for the world!'"
-],
-
-"loved": [
-  "A bird once found a heart-shaped leaf and gave it to a friend.",
-  "They hugged feathers tight, glowing in golden warmth.",
-  "In that hug, the bird felt bigger than the sky — it felt loved."
-],
-
-"funny": [
-  "A silly bird wore socks on its wings and waddled like a duck.",
-  "All the animals laughed until their tummies hurt!",
-  "It wasn't afraid to be silly, because joy loves brave hearts."
-],
-
-"embarrassed": [
-  "The bird sang a song but forgot the words halfway through.",
-  "Its cheeks turned pink, and it hid behind a leaf.",
-  "Then its friends clapped anyway, saying, 'We love your voice, no matter what!'"
-],
-
-"curiosity": [
-  "A curious bird peeked into a shiny puddle, wondering what lived inside.",
-  "It followed a trail of sparkles into a magical forest nook.",
-  "Every step filled its heart with wonder, not fear — just pure 'what if?'"
-],
-
-"bored": [
-  "The bird stared at the clouds, hoping they’d turn into dragons.",
-  "It poked a stick in the dirt, then sighed the biggest sigh.",
-  "But then it found a pebble that rolled just right — and a game began."
-],
-
-"confused": [
-  "The bird flew in circles, unsure which way home was.",
-  "It asked a butterfly, but even she wasn’t sure.",
-  "So it sat, took a breath, and remembered — it’s okay to ask again."
-],
-
-"sad": [
-  "Raindrops dripped down the bird's feathers as it sat all alone.",
-  "It missed the sun and the songs that used to dance in the sky.",
-  "But then another bird sang nearby — and sadness softened into a song."
-],
-
-"lonely": [
-  "A tiny bird perched on a branch with no one nearby.",
-  "It sang quietly, hoping someone would hear its little tune.",
-  "And far off, an answer came — another voice singing just for it."
-],
-
-"injustice": [
-  "The bird built a beautiful nest, but someone took it away.",
-  "It cried out, 'That wasn’t fair,' but no one listened at first.",
-  "Then the other animals stood beside it and helped build an even better one — together."
-],
-
-"guilty": [
-  "The bird knocked over a friend’s flower pot by accident.",
-  "It hid behind a tree, heart heavy like a stone.",
-  "But when it said 'I’m sorry' and helped fix it, the sun felt warm again."
-],
-
-"envy": [
-  "The bird watched others fly higher and sparkle more brightly.",
-  "It sighed, wishing its feathers shimmered too.",
-  "But then someone said, 'Your song is the most beautiful thing I’ve ever heard.'"
-],
-
-"jealous": [
-  "The bird saw its best friend laughing with someone new.",
-  "A twisty feeling tickled its chest, like a tangled vine.",
-  "But when it joined in the fun, it realized hearts grow bigger, not smaller, with more friends."
-],
-"angry": [
-  "Once upon a time, there was a joyful bird who loved the sun.",
-  "It chirped happily every morning and danced with butterflies.",
-  "One day, it helped a friend and made the whole forest smile."
-],
-"scared": [
-  "A little bird once felt sad because the clouds hid the sun.",
-  "It sat quietly, hoping someone would notice its droopy wings.",
-  "Then a rainbow appeared, reminding the bird that sad times pass."
-]
+  "happy": [
+    {
+      "text": "In a bright meadow, a bird twirled under the sun with giggles in the wind.",
+      "image": "happy1"
+    },
+    {
+      "text": "Its wings sparkled as it played hide-and-seek with the daisies.",
+      "image": "happy2"
+    },
+    {
+      "text": "The whole forest smiled, for happiness shone from that little heart.",
+      "image": "happy3"
+    }
+  ],
+  "relaxed": [
+    {
+      "text": "A cozy bird rocked gently in a tree swing, listening to soft leaves rustle.",
+      "image": "relaxed1"
+    },
+    {
+      "text": "With each sway, the sky whispered calm lullabies.",
+      "image": "relaxed2"
+    },
+    {
+      "text": "It closed its eyes, knowing everything was just right in that moment.",
+      "image": "relaxed3"
+    }
+  ],
+  "safe": [
+    {
+      "text": "Tucked beneath its mama's wing, the little bird heard the beat of love.",
+      "image": "safe1"
+    },
+    {
+      "text": "Even when the wind howled, that soft warmth never faded.",
+      "image": "safe2"
+    },
+    {
+      "text": "It knew no storm could reach it while that wing was there.",
+      "image": "safe3"
+    }
+  ],
+  "energetic": [
+    {
+      "text": "The bird zipped through the sky like a rainbow lightning bolt!",
+      "image": "energetic1"
+    },
+    {
+      "text": "It chirped with excitement, daring clouds to race it.",
+      "image": "energetic2"
+    },
+    {
+      "text": "Every flap of its wings shouted, 'I'm ready for the world!'",
+      "image": "energetic3"
+    }
+  ],
+  "loved": [
+    {
+      "text": "A bird once found a heart-shaped leaf and gave it to a friend.",
+      "image": "loved1"
+    },
+    {
+      "text": "They hugged feathers tight, glowing in golden warmth.",
+      "image": "loved2"
+    },
+    {
+      "text": "In that hug, the bird felt bigger than the sky \u2014 it felt loved.",
+      "image": "loved3"
+    }
+  ],
+  "funny": [
+    {
+      "text": "A silly bird wore socks on its wings and waddled like a duck.",
+      "image": "funny1"
+    },
+    {
+      "text": "All the animals laughed until their tummies hurt!",
+      "image": "funny2"
+    },
+    {
+      "text": "It wasn't afraid to be silly, because joy loves brave hearts.",
+      "image": "funny3"
+    }
+  ],
+  "embarrassed": [
+    {
+      "text": "The bird sang a song but forgot the words halfway through.",
+      "image": "embarrassed1"
+    },
+    {
+      "text": "Its cheeks turned pink, and it hid behind a leaf.",
+      "image": "embarrassed2"
+    },
+    {
+      "text": "Then its friends clapped anyway, saying, 'We love your voice, no matter what!'",
+      "image": "embarrassed3"
+    }
+  ],
+  "curiosity": [
+    {
+      "text": "A curious bird peeked into a shiny puddle, wondering what lived inside.",
+      "image": "curiosity1"
+    },
+    {
+      "text": "It followed a trail of sparkles into a magical forest nook.",
+      "image": "curiosity2"
+    },
+    {
+      "text": "Every step filled its heart with wonder, not fear \u2014 just pure 'what if?'",
+      "image": "curiosity3"
+    }
+  ],
+  "bored": [
+    {
+      "text": "The bird stared at the clouds, hoping they\u2019d turn into dragons.",
+      "image": "bored1"
+    },
+    {
+      "text": "It poked a stick in the dirt, then sighed the biggest sigh.",
+      "image": "bored2"
+    },
+    {
+      "text": "But then it found a pebble that rolled just right \u2014 and a game began.",
+      "image": "bored3"
+    }
+  ],
+  "confused": [
+    {
+      "text": "The bird flew in circles, unsure which way home was.",
+      "image": "confused1"
+    },
+    {
+      "text": "It asked a butterfly, but even she wasn\u2019t sure.",
+      "image": "confused2"
+    },
+    {
+      "text": "So it sat, took a breath, and remembered \u2014 it\u2019s okay to ask again.",
+      "image": "confused3"
+    }
+  ],
+  "sad": [
+    {
+      "text": "Raindrops dripped down the bird's feathers as it sat all alone.",
+      "image": "sad1"
+    },
+    {
+      "text": "It missed the sun and the songs that used to dance in the sky.",
+      "image": "sad2"
+    },
+    {
+      "text": "But then another bird sang nearby \u2014 and sadness softened into a song.",
+      "image": "sad3"
+    }
+  ],
+  "lonely": [
+    {
+      "text": "A tiny bird perched on a branch with no one nearby.",
+      "image": "lonely1"
+    },
+    {
+      "text": "It sang quietly, hoping someone would hear its little tune.",
+      "image": "lonely2"
+    },
+    {
+      "text": "And far off, an answer came \u2014 another voice singing just for it.",
+      "image": "lonely3"
+    }
+  ],
+  "injustice": [
+    {
+      "text": "The bird built a beautiful nest, but someone took it away.",
+      "image": "injustice1"
+    },
+    {
+      "text": "It cried out, 'That wasn\u2019t fair,' but no one listened at first.",
+      "image": "injustice2"
+    },
+    {
+      "text": "Then the other animals stood beside it and helped build an even better one \u2014 together.",
+      "image": "injustice3"
+    }
+  ],
+  "guilty": [
+    {
+      "text": "The bird knocked over a friend\u2019s flower pot by accident.",
+      "image": "guilty1"
+    },
+    {
+      "text": "It hid behind a tree, heart heavy like a stone.",
+      "image": "guilty2"
+    },
+    {
+      "text": "But when it said 'I\u2019m sorry' and helped fix it, the sun felt warm again.",
+      "image": "guilty3"
+    }
+  ],
+  "envy": [
+    {
+      "text": "The bird watched others fly higher and sparkle more brightly.",
+      "image": "envy1"
+    },
+    {
+      "text": "It sighed, wishing its feathers shimmered too.",
+      "image": "envy2"
+    },
+    {
+      "text": "But then someone said, 'Your song is the most beautiful thing I\u2019ve ever heard.'",
+      "image": "envy3"
+    }
+  ],
+  "jealous": [
+    {
+      "text": "The bird saw its best friend laughing with someone new.",
+      "image": "jealous1"
+    },
+    {
+      "text": "A twisty feeling tickled its chest, like a tangled vine.",
+      "image": "jealous2"
+    },
+    {
+      "text": "But when it joined in the fun, it realized hearts grow bigger, not smaller, with more friends.",
+      "image": "jealous3"
+    }
+  ],
+  "angry": [
+    {
+      "text": "Once upon a time, there was a joyful bird who loved the sun.",
+      "image": "angry1"
+    },
+    {
+      "text": "It chirped happily every morning and danced with butterflies.",
+      "image": "angry2"
+    },
+    {
+      "text": "One day, it helped a friend and made the whole forest smile.",
+      "image": "angry3"
+    }
+  ],
+  "scared": [
+    {
+      "text": "A little bird once felt sad because the clouds hid the sun.",
+      "image": "scared1"
+    },
+    {
+      "text": "It sat quietly, hoping someone would notice its droopy wings.",
+      "image": "scared2"
+    },
+    {
+      "text": "Then a rainbow appeared, reminding the bird that sad times pass.",
+      "image": "scared3"
+    }
+  ]
 }

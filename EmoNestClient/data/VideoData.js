@@ -13,5 +13,5 @@ export const videoSourceMap = {
 //   warm: require('../assets/videos/warm.mp4'),
 //   guilty: require('../assets/videos/guilty.mp4'),
 //   funny: require('../assets/videos/funny.mp4'),
-//   talkative: require('../assets/videos/talkative.mp4'),
+relaxed: require('../assets/videos/relaxed.mp4'),
 };

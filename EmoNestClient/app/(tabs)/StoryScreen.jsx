@@ -26,7 +26,7 @@ const StoryScreen = () => {
       <BackButton />
 
       <ScrollView contentContainerStyle={styles.content}>
-        <StoryPage text={story[page]} />
+        <StoryPage text={story[page].text} image={story[page].image} />
         <StoryController
           onNext={handleNext}
           onPrev={handlePrev}

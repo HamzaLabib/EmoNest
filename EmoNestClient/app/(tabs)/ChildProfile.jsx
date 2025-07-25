@@ -16,7 +16,7 @@ import ModalExample from '../../components/ModalExample';
 import ChildInfo from '../../components/ProfileScreen/ChildInfo';
 
 const ChildProfile = () => {
-  const avatarSource = require('../../assets/photos/avatars/lily.png');
+  const avatarSource = require('../../assets/photos/happy.png');
   const [modalVisible, setModalVisible] = useState(false);
   const [moodHistory, setMoodHistory] = useState([]);
   const [childInfo, setChildInfo] = useState({ childName: '', age: '' });

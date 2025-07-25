@@ -55,8 +55,12 @@ export default function useChat() {
   };
 
   const handleMoodSelect = (moodKey) => {
-    const prompt = replies[moodKey].prompt;
-    const reply  = replies[moodKey].replies?.[0] || replies[moodKey].reply;
+    const entry = replies[moodKey];
+    const prompt = entry.prompt;
+    const replyArray = entry.replies?.length ? entry.replies : [entry.reply];
+    const randomIndex = Math.floor(Math.random() * replyArray.length);
+    const reply = replyArray[randomIndex];
+
     sendMessage(prompt, 'child');
     sendMessage(reply, 'bot');
     utils?.speak?.(reply);
